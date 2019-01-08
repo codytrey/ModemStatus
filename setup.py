@@ -4,7 +4,7 @@ setup(
     name='ModemStatus',
     version='0.0.01',
     packages=['ModemStatus'],
-    url='',
+    url='https://github.com/codytrey/ModemStatus',
     license='GNU GPLv3',
     author='Cody Belcher',
     author_email='cody.t.belcher@gmail.com',
