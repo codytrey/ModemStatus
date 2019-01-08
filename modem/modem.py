@@ -2,13 +2,15 @@ import requests
 import time
 import datetime
 import json
+import os
 from bs4 import BeautifulSoup
 from .exeptions import InvalidVendor
 from .db import ModemDB
 
 
 def url_for_vendor(vendor, ip):
-    with open("modem_vendors.json", 'r') as f:
+
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"modem_vendors.json"), 'r') as f:
         vendor_list = json.load(f)
     if vendor in vendor_list["supported_list"]:
         for i in vendor_list["vendor_details"]:
@@ -19,7 +21,7 @@ def url_for_vendor(vendor, ip):
 
 
 class Modem:
-    def __init__(self, ip, vendor, dbfile):
+    def __init__(self, ip, vendor, dbfile=None):
         self.ip = ip
         self.vendor = vendor
         self.url = url_for_vendor(self.vendor, self.ip)
@@ -28,7 +30,10 @@ class Modem:
         self.soup = None
         self.downstreamttalbe = None
         self.upstreamtable = None
-        self.db = ModemDB('./modem.db')
+        if dbfile is None:
+            self.db = ModemDB(str(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modem.db")))
+        else:
+            self.db = ModemDB(dbfile)
 
     def status_cgi(self):
         r = requests.get("http://192.168.100.1/cgi-bin/status_cgi")
@@ -168,3 +173,8 @@ class Modem:
 
         self.db.update_status(uptime, cable_if_enabled, cable_if_state,
                               datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
+
+    def update_all(self):
+        self.statustbl()
+        self.upstreamtbl()
+        self.downstreamtbl()
