@@ -1,0 +1,6 @@
+{"supported_list": ["arris"],
+"vendor_details":
+[
+  {"name":"arris", "proto": "http", "uri":"/cgi-bin/status_cgi"}
+]
+}
