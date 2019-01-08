@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='ModemStatus',
     version='0.0.01',
-    packages=['modem'],
+    packages=['ModemStatus'],
     url='',
     license='GNU GPLv3',
     author='Cody Belcher',
