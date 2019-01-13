@@ -2,7 +2,7 @@ FROM centos:7
 LABEL maintainers="cody.t.belcher@gmail.com"
 
 RUN yum -y update \
-    && yum -y install centos-release-scl
+    && yum -y install centos-release-scl \
     && yum -y install git \
     && yum -y install rh-python36
 
