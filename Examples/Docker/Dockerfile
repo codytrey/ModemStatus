@@ -19,6 +19,8 @@ RUN chmod +x /tmp/create_virt_env.sh
 
 RUN scl enable rh-python36 bash /tmp/create_virt_env.sh
 
-#CMD ["scl enable rh-python36 bash /tmp/run_script.sh"]
+RUN mkdir /tmp/modemstatus
+
+ENTRYPOINT ["/tmp/modemstatus"]
 
 CMD ["/tmp/run_script.sh"]
