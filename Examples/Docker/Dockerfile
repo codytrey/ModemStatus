@@ -17,7 +17,7 @@ COPY create_virt_env.sh /tmp
 
 RUN chmod +x /tmp/create_virt_env.sh
 
-RUN scl enable rh-python36 bash /tmp/create_virt_env.sh
+RUN ["scl", "enable", "rh-python36", "/tmp/create_virt_env.sh"]
 
 RUN mkdir /tmp/modemstatus
 
