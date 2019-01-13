@@ -21,6 +21,6 @@ RUN ["scl", "enable", "rh-python36", "/tmp/create_virt_env.sh"]
 
 RUN mkdir /tmp/modemstatus
 
-ENTRYPOINT ["/tmp/modemstatus"]
+RUN chmod 777 /tmp/modemstatus
 
 CMD ["/tmp/run_script.sh"]
