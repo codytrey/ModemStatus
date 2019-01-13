@@ -46,7 +46,8 @@ for x in c.execute("select * from downstream"):
         ds8s.append(float(x[15]))
         # time.append(x[16])
         # datetime.datetime.strptime(x[16],'%Y-%m-%d %H:%M:%S')
-        time.append(datetime.datetime.strptime(x[16], '%Y-%m-%d %H:%M:%S'))
+        # time.append(datetime.datetime.strptime(x[16], '%Y-%m-%d %H:%M:%S'))
+        time.append(datetime.datetime.fromtimestamp(x[16]))
 
 ds1p_plot = go.Scatter(
     x=time,
@@ -146,7 +147,8 @@ for x in c.execute("select * from upstream"):
     us1p.append(float(x[0]))
     us2p.append(float(x[1]))
     us3p.append(float(x[2]))
-    time.append(datetime.datetime.strptime(x[3], '%Y-%m-%d %H:%M:%S'))
+    time.append(datetime.datetime.fromtimestamp(x[3]))
+    # time.append(datetime.datetime.strptime(x[3], '%Y-%m-%d %H:%M:%S'))
 
 us1p_plot = go.Scatter(
     x=time,

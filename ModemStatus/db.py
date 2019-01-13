@@ -12,9 +12,9 @@ class ModemDB:
             c.execute('''CREATE TABLE downstream (ds1pwr text, ds1snr text,
             ds2pwr text, ds2snr text, ds3pwr text, ds3snr text, ds4pwr text, ds4snr text,
             ds5pwr text, ds5snr text, ds6pwr text, ds6snr text, ds7pwr text, ds7snr text,
-            ds8pwr text, ds8snr text, date text)''')
-            c.execute('''CREATE TABLE upstream (us1pwr text, us2pwr text, us3pwr text, date text)''')
-            c.execute('''CREATE TABLE status (uptime text, cable_if_enabled text, cable_if_state text, date text)''')
+            ds8pwr text, ds8snr text, date integer)''')
+            c.execute('''CREATE TABLE upstream (us1pwr text, us2pwr text, us3pwr text, date integer)''')
+            c.execute('''CREATE TABLE status (uptime text, cable_if_enabled text, cable_if_state text, date integer)''')
             self.conn.commit()
 
     def update_status(self, uptime, ifenabled, ifstate, date):
