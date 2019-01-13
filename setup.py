@@ -4,6 +4,10 @@ setup(
     name='ModemStatus',
     version='0.0.01',
     packages=['ModemStatus'],
+    install_requires=[
+        'bs4',
+        'requests',
+    ],
     url='https://github.com/codytrey/ModemStatus',
     license='GNU GPLv3',
     author='Cody Belcher',
