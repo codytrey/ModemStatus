@@ -8,8 +8,8 @@ git clone https://github.com/codytrey/ModemStatus.git
 
 cd ModemStatus
 
+pip install --upgrade pip
+
 pip install .
 
-cd
-
-pip install -r ModemStatus/requirements.txt
+pip install -r requirements.txt

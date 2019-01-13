@@ -17,6 +17,8 @@ COPY create_virt_env.sh /tmp
 
 RUN chmod +x /tmp/create_virt_env.sh
 
-RUN scl enable rh-python36 /tmp/create_virt_env.sh
+RUN scl enable rh-python36 bash /tmp/create_virt_env.sh
 
-CMD ["scl enable rh-python36 /tmp/run_script.sh"]
+#CMD ["scl enable rh-python36 bash /tmp/run_script.sh"]
+
+CMD ["/tmp/run_script.sh"]
