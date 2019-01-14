@@ -161,7 +161,7 @@ class Modem:
             ds8snr = "0.0"
         self.db.update_downstream(ds1pwr, ds1snr, ds2pwr, ds2snr, ds3pwr, ds3snr, ds4pwr, ds4snr, ds5pwr,
                                   ds5snr, ds6pwr, ds6snr, ds7pwr, ds7snr, ds8pwr, ds8snr,
-                                  datetime.datetime.fromtimestamp(time.time(), datetime.timezone.utc).timestamp())
+                                  datetime.datetime.fromtimestamp(time.time()).timestamp())
         #                         datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
 
     def upstreamtbl(self):
@@ -200,7 +200,7 @@ class Modem:
             us2pwr = "0.0"
             us3pwr = "0.0"
         self.db.update_upstream(us1pwr, us2pwr, us3pwr,
-                                datetime.datetime.fromtimestamp(time.time(), datetime.timezone.utc).timestamp())
+                                datetime.datetime.fromtimestamp(time.time()).timestamp())
         #                       datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
 
     def statustbl(self):
@@ -222,7 +222,7 @@ class Modem:
         cable_if_state = cable_if_state[4:-5]
 
         self.db.update_status(uptime, cable_if_enabled, cable_if_state,
-                              datetime.datetime.fromtimestamp(time.time(), datetime.timezone.utc).timestamp())
+                              datetime.datetime.fromtimestamp(time.time()).timestamp())
         #                     datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
 
     def update_all(self):
