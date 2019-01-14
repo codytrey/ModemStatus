@@ -8,7 +8,7 @@ while true; do
     sleep $PERIOD
     ((i=i+1))
     if [ $i == 5 ]; then
-        python /ModemStatus/Examples/Graph_Stats.py /tmp/modemstatus/modem.db
+        python /ModemStatus/Examples/Graph_Stats/graph_stats.py /tmp/modemstatus/modem.db
         i=0
     fi
 done

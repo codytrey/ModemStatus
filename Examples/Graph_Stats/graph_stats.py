@@ -28,22 +28,70 @@ ds8p = []
 ds8s = []
 time = []
 for x in c.execute("select * from downstream"):
-        ds1p.append(float(x[0]))
-        ds1s.append(float(x[1]))
-        ds2p.append(float(x[2]))
-        ds2s.append(float(x[3]))
-        ds3p.append(float(x[4]))
-        ds3s.append(float(x[5]))
-        ds4p.append(float(x[6]))
-        ds4s.append(float(x[7]))
-        ds5p.append(float(x[8]))
-        ds5s.append(float(x[9]))
-        ds6p.append(float(x[10]))
-        ds6s.append(float(x[11]))
-        ds7p.append(float(x[12]))
-        ds7s.append(float(x[13]))
-        ds8p.append(float(x[14]))
-        ds8s.append(float(x[15]))
+        if x[0] == "":
+            ds1p.append(0.0)
+        else:
+            ds1p.append(float(x[0]))
+        if x[1] == "":
+            ds1s.append(0.0)
+        else:
+            ds1s.append(float(x[1]))
+        if x[2] == "":
+            ds2p.append(0.0)
+        else:
+            ds2p.append(float(x[2]))
+        if x[3] == "":
+            ds2s.append(0.0)
+        else:
+            ds2s.append(float(x[3]))
+        if x[4] == "":
+            ds3p.append(0.0)
+        else:
+            ds3p.append(float(x[4]))
+        if x[5] == "":
+            ds3s.append(0.0)
+        else:
+            ds3s.append(float(x[5]))
+        if x[6] == "":
+            ds4p.append(0.0)
+        else:
+            ds4p.append(float(x[6]))
+        if x[7] == "":
+            ds4s.append(0.0)
+        else:
+            ds4s.append(float(x[7]))
+        if x[8] == "":
+            ds5p.append(0.0)
+        else:
+            ds5p.append(float(x[8]))
+        if x[9] == "":
+            ds5s.append(0.0)
+        else:
+            ds5s.append(float(x[9]))
+        if x[10] == "":
+            ds6p.append(0.0)
+        else:
+            ds6p.append(float(x[10]))
+        if x[11] == "":
+            ds6s.append(0.0)
+        else:
+            ds6s.append(float(x[11]))
+        if x[12] == "":
+            ds7p.append(0.0)
+        else:
+            ds7p.append(float(x[12]))
+        if x[13] == "":
+            ds7s.append(0.0)
+        else:
+            ds7s.append(float(x[13]))
+        if x[14] == "":
+            ds8p.append(0.0)
+        else:
+            ds8p.append(float(x[14]))
+        if x[15] == "":
+            ds8s.append(0.0)
+        else:
+            ds8s.append(float(x[15]))
         # time.append(x[16])
         # datetime.datetime.strptime(x[16],'%Y-%m-%d %H:%M:%S')
         # time.append(datetime.datetime.strptime(x[16], '%Y-%m-%d %H:%M:%S'))
@@ -144,9 +192,18 @@ us2p = []
 us3p = []
 time = []
 for x in c.execute("select * from upstream"):
-    us1p.append(float(x[0]))
-    us2p.append(float(x[1]))
-    us3p.append(float(x[2]))
+    if x[0] == "":
+        us1p.append(0.0)
+    else:
+        us1p.append(float(x[0]))
+    if x[1] == "":
+        us2p.append(0.0)
+    else:
+        us2p.append(float(x[1]))
+    if x[2] == "":
+        us3p.append(0.0)
+    else:
+        us3p.append(float(x[2]))
     time.append(datetime.datetime.fromtimestamp(x[3]))
     # time.append(datetime.datetime.strptime(x[3], '%Y-%m-%d %H:%M:%S'))
 
