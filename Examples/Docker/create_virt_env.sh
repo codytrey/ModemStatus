@@ -12,4 +12,6 @@ pip install --upgrade pip
 
 pip install .
 
+pip install plotly
+
 pip install -r requirements.txt
