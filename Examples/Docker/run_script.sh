@@ -2,6 +2,8 @@
 
 source virtenv/bin/activate
 
+pushd /tmp/modemstatus
+
 i=0
 while true; do
     python /ModemStatus/Examples/Update_All/update_all.py /tmp/modemstatus/modem.db
@@ -12,3 +14,5 @@ while true; do
         i=0
     fi
 done
+
+popd
