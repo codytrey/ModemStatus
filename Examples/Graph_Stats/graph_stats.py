@@ -28,70 +28,70 @@ ds8p = []
 ds8s = []
 time = []
 for x in c.execute("select * from downstream"):
-        if x[0] == "":
-            ds1p.append(0.0)
-        else:
+        try:
             ds1p.append(float(x[0]))
-        if x[1] == "":
-            ds1s.append(0.0)
-        else:
+        except ValueError:
+            ds1p.append(0.0)
+        try:
             ds1s.append(float(x[1]))
-        if x[2] == "":
-            ds2p.append(0.0)
-        else:
+        except ValueError:
+            ds1s.append(0.0)
+        try:
             ds2p.append(float(x[2]))
-        if x[3] == "":
-            ds2s.append(0.0)
-        else:
+        except ValueError:
+            ds2p.append(0.0)
+        try:
             ds2s.append(float(x[3]))
-        if x[4] == "":
-            ds3p.append(0.0)
-        else:
+        except ValueError:
+            ds2s.append(0.0)
+        try:
             ds3p.append(float(x[4]))
-        if x[5] == "":
-            ds3s.append(0.0)
-        else:
+        except ValueError:
+            ds3p.append(0.0)
+        try:
             ds3s.append(float(x[5]))
-        if x[6] == "":
-            ds4p.append(0.0)
-        else:
+        except ValueError:
+            ds3s.append(0.0)
+        try:
             ds4p.append(float(x[6]))
-        if x[7] == "":
-            ds4s.append(0.0)
-        else:
+        except ValueError:
+            ds4p.append(0.0)
+        try:
             ds4s.append(float(x[7]))
-        if x[8] == "":
-            ds5p.append(0.0)
-        else:
+        except ValueError:
+            ds4s.append(0.0)
+        try:
             ds5p.append(float(x[8]))
-        if x[9] == "":
-            ds5s.append(0.0)
-        else:
+        except ValueError:
+            ds5p.append(0.0)
+        try:
             ds5s.append(float(x[9]))
-        if x[10] == "":
-            ds6p.append(0.0)
-        else:
+        except ValueError:
+            ds5s.append(0.0)
+        try:
             ds6p.append(float(x[10]))
-        if x[11] == "":
-            ds6s.append(0.0)
-        else:
+        except ValueError:
+            ds6p.append(0.0)
+        try:
             ds6s.append(float(x[11]))
-        if x[12] == "":
-            ds7p.append(0.0)
-        else:
+        except ValueError:
+            ds6s.append(0.0)
+        try:
             ds7p.append(float(x[12]))
-        if x[13] == "":
-            ds7s.append(0.0)
-        else:
+        except ValueError:
+            ds7p.append(0.0)
+        try:
             ds7s.append(float(x[13]))
-        if x[14] == "":
-            ds8p.append(0.0)
-        else:
+        except ValueError:
+            ds7s.append(0.0)
+        try:
             ds8p.append(float(x[14]))
-        if x[15] == "":
-            ds8s.append(0.0)
-        else:
+        except ValueError:
+            ds8p.append(0.0)
+        try:
             ds8s.append(float(x[15]))
+        except ValueError:
+            ds8s.append(0.0)
         # time.append(x[16])
         # datetime.datetime.strptime(x[16],'%Y-%m-%d %H:%M:%S')
         # time.append(datetime.datetime.strptime(x[16], '%Y-%m-%d %H:%M:%S'))
@@ -192,18 +192,18 @@ us2p = []
 us3p = []
 time = []
 for x in c.execute("select * from upstream"):
-    if x[0] == "":
-        us1p.append(0.0)
-    else:
+    try:
         us1p.append(float(x[0]))
-    if x[1] == "":
-        us2p.append(0.0)
-    else:
+    except ValueError:
+        us1p.append(0.0)
+    try:
         us2p.append(float(x[1]))
-    if x[2] == "":
-        us3p.append(0.0)
-    else:
+    except ValueError:
+        us2p.append(0.0)
+    try:
         us3p.append(float(x[2]))
+    except ValueError:
+        us3p.append(0.0)
     time.append(datetime.datetime.fromtimestamp(x[3]))
     # time.append(datetime.datetime.strptime(x[3], '%Y-%m-%d %H:%M:%S'))
 

@@ -4,9 +4,9 @@ python -m venv virtenv
 
 source virtenv/bin/activate
 
-git clone https://github.com/codytrey/ModemStatus.git
+#git clone https://github.com/codytrey/ModemStatus.git
 
-cd ModemStatus
+cd /ModemStatus
 
 pip install --upgrade pip
 

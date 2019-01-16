@@ -9,18 +9,38 @@ RUN yum -y update \
 ARG PERIOD
 ENV PERIOD ${PERIOD:-300}
 
-COPY run_script.sh /tmp
-
-RUN chmod +x /tmp/run_script.sh
-
-COPY create_virt_env.sh /tmp
-
-RUN chmod +x /tmp/create_virt_env.sh
-
-RUN ["scl", "enable", "rh-python36", "/tmp/create_virt_env.sh"]
+ARG TZ
+ENV TZ ${TZ:-America/Chicago}
 
 RUN mkdir /tmp/modemstatus
 
 RUN chmod 777 /tmp/modemstatus
+
+RUN timedatectl set-timezone $TZ
+
+COPY run_script.sh /tmp
+
+RUN chmod +x /tmp/run_script.sh
+
+#COPY create_virt_env.sh /tmp
+
+ADD ../../ModemStatus /ModemStatus
+
+ADD ../Graph_Stats/graph_stats.py /tmp/graph_stats.py
+
+ADD ../Update_All/update_all.py /tmp/update_all.py
+
+ADD requirements.txt /tmp
+
+RUN ["scl", "enable", "rh-python36", "python", "-m", "venv", "virtenv"]
+
+RUN source virtenv/bin/activate && \
+    pip install --upgrade pip && \
+    pip install /ModemStatus && \
+    pip install -r /tmp/requirements.txt
+
+#RUN chmod +x /tmp/create_virt_env.sh
+
+#RUN ["scl", "enable", "rh-python36", "/tmp/create_virt_env.sh"]
 
 CMD ["/tmp/run_script.sh"]
