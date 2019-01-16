@@ -30,9 +30,8 @@ ADD https://raw.githubusercontent.com/codytrey/ModemStatus/master/Examples/Updat
 
 ADD requirements.txt /tmp
 
-RUN mkdir ModemStatus && \
-    cd ModemStatus && \
-    tar xvf ../ModemStatus-0.0.02.tar.gz
+RUN tar xvf ModemStatus-0.0.02.tar.gz && \
+    mv ModemStatus-0.0.02 ModemStatus
 
 RUN ["scl", "enable", "rh-python36", "python", "-m", "venv", "virtenv"]
 
