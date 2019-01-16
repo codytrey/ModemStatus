@@ -16,21 +16,23 @@ RUN mkdir /tmp/modemstatus
 
 RUN chmod 777 /tmp/modemstatus
 
-RUN timedatectl set-timezone $TZ
-
 COPY run_script.sh /tmp
 
 RUN chmod +x /tmp/run_script.sh
 
 #COPY create_virt_env.sh /tmp
 
-ADD ../../ModemStatus /ModemStatus
+ADD https://github.com/codytrey/ModemStatus/archive/0.0.02.tar.gz /ModemStatus-0.0.02.tar.gz
 
-ADD ../Graph_Stats/graph_stats.py /tmp/graph_stats.py
+ADD https://raw.githubusercontent.com/codytrey/ModemStatus/master/Examples/Graph_Stats/graph_stats.py /tmp/graph_stats.py
 
-ADD ../Update_All/update_all.py /tmp/update_all.py
+ADD https://raw.githubusercontent.com/codytrey/ModemStatus/master/Examples/Update_All/update_all.py /tmp/update_all.py
 
 ADD requirements.txt /tmp
+
+RUN mkdir ModemStatus && \
+    cd ModemStatus && \
+    tar xvf ../ModemStatus-0.0.02.tar.gz
 
 RUN ["scl", "enable", "rh-python36", "python", "-m", "venv", "virtenv"]
 

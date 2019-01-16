@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='ModemStatus',
-    version='0.0.01',
+    version='0.0.02',
     packages=['ModemStatus'],
     install_requires=[
         'bs4',
