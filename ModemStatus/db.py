@@ -15,7 +15,14 @@ class ModemDB:
             ds8pwr text, ds8snr text, date integer)''')
             c.execute('''CREATE TABLE upstream (us1pwr text, us2pwr text, us3pwr text, date integer)''')
             c.execute('''CREATE TABLE status (uptime text, cable_if_enabled text, cable_if_state text, date integer)''')
+            c.execute('''CREATE TABLE EventLog (datetime integer, eventid integer, eventlevel integer, description text)''')
             self.conn.commit()
+
+    def newest_event_datetime(self):
+        c = self.conn.cursor()
+        c.execute('''SELECT MAX(datetime) from EventLog''')
+        return c.fetchone()[0]
+
 
     def update_status(self, uptime, ifenabled, ifstate, date):
         v = (uptime, ifenabled, ifstate, date,)

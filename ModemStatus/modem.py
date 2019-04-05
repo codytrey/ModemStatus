@@ -38,6 +38,39 @@ class Modem:
         else:
             self.db = ModemDB(dbfile)
 
+    def event_cgi(self):
+        r = requests.get(self.url + "event_cgi")
+        # temp = list(list(list(list(list(list(list(list(BeautifulSoup(r.content, 'html.parser').children)[2])[3])[1])[5])[1])[11])[1])[4:-1]
+        # temp = list(BeautifulSoup(r.content, 'html.parser').children)[2]
+        # print(temp)
+        # temp = list(temp)[3]
+        temp = BeautifulSoup(r.content, 'html.parser')
+        temp = list(temp.children)[2]
+        temp = list(temp.children)[3]
+        temp = list(temp.children)[1]
+        temp = list(temp.children)[5]
+        temp = list(temp.children)[1]
+        temp = list(temp.children)[11]
+        temp = list(temp.children)[1]
+        temp = list(temp.children)[4:-1]
+        last_event_dt = self.db.newest_event_datetime()
+        if last_event_dt is None:
+            last_event_dt = datetime.datetime(1970, 1, 1, 0, 0, 0).timestamp()
+        else:
+            last_event_dt = datetime.datetime.fromtimestamp(int(last_event_dt)).timestamp()
+        print(last_event_dt)
+
+        for i in temp:
+            dt = datetime.datetime.strptime(str(list(i)[1])[19:-5],'%d/%m/%Y %H:%M').timestamp()
+            id = str(list(i)[3])[19:-5]
+            lvl = str(list(i)[5])[19:-5]
+            msg = str(list(i)[7])[19:-5]
+            c = self.db.conn.cursor()
+            if (last_event_dt < dt):
+                v = (dt, id, lvl, msg,)
+                c.execute("INSERT INTO EventLog VALUES (?, ?, ?, ?)", v)
+            self.db.conn.commit()
+
     def cm_state_cgi(self):
         r = requests.get(self.url + "cm_state_cgi")
         self.soup2 = BeautifulSoup(r.content, 'html.parser')
@@ -229,3 +262,4 @@ class Modem:
         self.statustbl()
         self.upstreamtbl()
         self.downstreamtbl()
+        self.event_cgi()

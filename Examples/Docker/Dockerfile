@@ -33,7 +33,7 @@ ADD requirements.txt /tmp
 RUN tar xvf ModemStatus-0.0.02.tar.gz && \
     mv ModemStatus-0.0.02 ModemStatus
 
-RUN ["scl", "enable", "rh-python36", "python", "-m", "venv", "virtenv"]
+RUN ["scl", "enable", "rh-python36", "python -m venv virtenv"]
 
 RUN source virtenv/bin/activate && \
     pip install --upgrade pip && \
