@@ -22,7 +22,7 @@ RUN chmod +x /tmp/run_script.sh
 
 #COPY create_virt_env.sh /tmp
 
-ADD https://github.com/codytrey/ModemStatus/archive/0.0.02.tar.gz /ModemStatus-0.0.02.tar.gz
+ADD https://github.com/codytrey/ModemStatus/archive/0.0.03.tar.gz /ModemStatus-0.0.03.tar.gz
 
 ADD https://raw.githubusercontent.com/codytrey/ModemStatus/master/Examples/Graph_Stats/graph_stats.py /tmp/graph_stats.py
 
@@ -30,8 +30,8 @@ ADD https://raw.githubusercontent.com/codytrey/ModemStatus/master/Examples/Updat
 
 ADD requirements.txt /tmp
 
-RUN tar xvf ModemStatus-0.0.02.tar.gz && \
-    mv ModemStatus-0.0.02 ModemStatus
+RUN tar xvf ModemStatus-0.0.03.tar.gz && \
+    mv ModemStatus-0.0.03 ModemStatus
 
 RUN ["scl", "enable", "rh-python36", "python -m venv virtenv"]
 
